@@ -65,3 +65,46 @@
         box-shadow: none;        
     }
 }
+.buttons{
+    width: 100%;
+    height: calc(30% - 64px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .button{
+        width: 128px;
+        height: 56px;
+        border-radius: 28px;
+        border: 3px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(0,0,0,.25);
+        transition: .18s ease;
+        &:active>svg{
+            fill: #fff!important;
+        }
+        &__nope{
+            border-color: red;
+            svg{
+                fill: red;
+            }
+            &:active{
+                background-color: red;
+            }
+        }
+        &__want{
+            border-color: map-get($colors, primary);
+            svg{
+                fill: map-get($colors, primary);
+            }
+            &:active{
+                background-color: map-get($colors, primary);
+            }
+        }
+        &:active{
+            box-shadow: 0 2px 4px rgba(0,0,0,.12);
+        }
+    }
+}

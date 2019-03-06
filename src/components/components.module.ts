@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CardsComponent } from './cards/cards';
-import { ButtonsComponent } from './buttons/buttons';
 @NgModule({
-	declarations: [CardsComponent,
-    ButtonsComponent],
+	declarations: [CardsComponent],
 	imports: [],
-	exports: [CardsComponent,
-    ButtonsComponent]
+	exports: [CardsComponent]
 })
 export class ComponentsModule {}

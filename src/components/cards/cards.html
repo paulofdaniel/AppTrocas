@@ -11,3 +11,18 @@
     </div>
   </div>
 </div>
+<div class="buttons" *ngIf="cards.length > 0">
+  <div class="button button__nope" (click)='throwCard("nope")'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+        <path id="ic_close_24px" d="M25,7.014,22.986,5,15,12.986,7.014,5,5,7.014,12.986,15,5,22.986,7.014,25,15,17.014,22.986,25,25,22.986,17.014,15Z" transform="translate(-5 -5)"/>
+      </svg>      
+  </div>
+  <div class="button button__want" (click)='throwCard("want")'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="Icon_Favorite_Filled" data-name="Icon / Favorite / Filled" transform="translate(-930 91)">
+          <rect id="Box" width="24" height="24" transform="translate(930 -91)" fill="none"/>
+          <path id="Caminho_407" data-name="Caminho 407" d="M869-1396.65l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53a5.447,5.447,0,0,1,5.5-5.5,5.989,5.989,0,0,1,4.5,2.09,5.989,5.989,0,0,1,4.5-2.09,5.447,5.447,0,0,1,5.5,5.5c0,3.78-3.4,6.86-8.55,11.54Z" transform="translate(73 1327)"/>
+        </g>
+      </svg>     
+  </div>
+</div>
