@@ -1,0 +1,67 @@
+.card-container{
+    margin-top: 3%;
+    height: 77%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__empty{
+        color: white;
+        font-size: 16px;
+    }
+}
+.card{
+    width: calc(100% - 64px);
+    height: 73%;
+    position: absolute;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    overflow: hidden;
+    transition: margin-top .2s ease, box-shadow .2s ease;
+    &__imagem{
+        height: 60%;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 12px;
+    }
+    span{
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        padding: 4px 16px 0 16px;
+    }
+    p{
+        font-size: 16px;
+        color: #666;
+        display: block;
+        padding: 0 16px;
+        height: calc(40% - 105px);
+        overflow: hidden;
+    }
+    &__more{
+        width: 100%;
+        text-align: right;
+        padding: 0 16px;
+        a{
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: map-get($colors, primary);     
+        }
+    }
+    &:nth-last-of-type(2){
+        margin-top: 5px;
+        box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    }
+    &:nth-last-of-type(3){
+        margin-top: 10px;
+        box-shadow: 0 6px 16px rgba(0,0,0,.25); 
+    }
+    &:nth-of-type(-n){
+        margin-top: 10px;
+        box-shadow: none;        
+    }
+}
