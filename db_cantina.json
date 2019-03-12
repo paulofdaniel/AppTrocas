@@ -1,0 +1,187 @@
+{
+  "category": [
+    {
+      "id":1,
+      "cardTitle":"Sanduíche",
+      "cardSubtitle":"Sanduíches naturais",
+      "imagem":"assets/imgss/sanduiche-natural.jpg"
+    },
+    {
+      "id": 2,
+      "cardTitle": "Pães de Queijo",
+      "cardSubtitle": "Normal e Recheados",
+      "imagem": "assets/imgss/pao-queijo.jpg"
+    },
+    {
+      "id": 3,
+      "cardTitle": "Pizzas",
+      "cardSubtitle": "Com bordas e Sem bordas",
+      "imagem": "assets/imgss/pizza.jpg"
+    },
+    {
+      "id": 4,
+      "cardTitle": "Chinesa",
+      "cardSubtitle": "Quentes e Rolinhos",
+      "imagem": "assets/imgss/chinesa.jpg"
+    },
+    {
+      "id": 5,
+      "cardTitle": "Bebidas",
+      "cardSubtitle": "Sucos e Refrigerantes",
+      "imagem": "assets/imgss/suco.jpg"
+    },
+    {
+      "id": 6,
+      "cardTitle": "Sobremesas",
+      "cardSubtitle": "Tortas e Doces",
+      "imagem": "assets/imgss/sobremesa.jpg"
+    }  
+  ],
+  "menu": [
+    {
+      "id": "cup-cake",
+      "imagePath": "assets/imgs/foods/cupcake.png",
+      "name": "Cup Cake",
+      "description": "Cup Cake recheado de Doce de Leite",
+      "price": 8.7,
+      "categoryId": 6
+    },
+    {
+      "id": "donut",
+      "imagePath": "assets/imgs/foods/donut.png",
+      "name": "Donut",
+      "description": "Coberto com chantilly",
+      "price": 2.5,
+      "categoryId": 6
+    },
+    {
+      "id": "bread",
+      "imagePath": "assets/imgs/foods/bread.png",
+      "name": "Pão Artesanal Italiano",
+      "description": "Pão artesanal com queijos italianos",
+      "price": 15.9,
+      "categoryId": 1
+    },
+    {
+      "id": "burger",
+      "imagePath": "assets/imgs/foods/burger.png",
+      "name": "Classic Burger",
+      "description": "O clássico. Não tem como errar.",
+      "price": 18.5,
+      "categoryId": 1
+    },
+    {
+      "id": "fries",
+      "imagePath": "assets/imgs/foods/fries.png",
+      "name": "Batatas Fritas",
+      "description": "Batatas fritas crocantes",
+      "price": 5.5,
+      "categoryId": 1
+    },
+    {
+      "id": "coke",
+      "imagePath": "assets/imgs/foods/coke.png",
+      "name": "Refrigerante",
+      "description": "O refri mais gelado da cidade.",
+      "price": 4.5,
+      "categoryId": 5
+    },
+    {
+      "id": "capp",
+      "imagePath": "assets/imgs/foods/capp.png",
+      "name": "Cappuccino com Chantilly",
+      "description": "Tradicional cappuccino com chantilly",
+      "price": 9.9,
+      "categoryId": 5
+    },
+    {
+      "id": "espreso",
+      "imagePath": "assets/imgs/foods/espreso.png",
+      "name": "Super Espreso",
+      "description": "Café espresso duplo. ",
+      "price": 12.5,
+      "categoryId": 5
+    },
+    {
+      "id": "starb",
+      "imagePath": "assets/imgs/foods/starb.png",
+      "name": "Starbucks Copycat",
+      "description": "O mais pedido da casa. O verdadeiro café americano pura água.",
+      "price": 15.6,
+      "categoryId": 5
+    },
+    {
+      "id": "lasagna",
+      "imagePath": "assets/imgs/foods/zlasagna.png",
+      "name": "Lasagna de Zucchini",
+      "description": "Lasagna deliciosa que se salva por causa do queijo",
+      "price": 14.9,
+      "categoryId": 3
+    },
+    {
+      "id": "greensandwich",
+      "imagePath": "assets/imgs/foods/greensandwich.png",
+      "name": "Sanduíche de Frango",
+      "description": "Frango grelhado e salada",
+      "price": 10.5,
+      "categoryId": 1
+    },
+    {
+      "id": "ceasar",
+      "imagePath": "assets/imgs/foods/ceasar.png",
+      "name": "Salada Ceasar",
+      "description": "Clássica salada ceasar.",
+      "price": 33.9,
+      "categoryId": 4
+    },
+    {
+      "id": "sunday",
+      "imagePath": "assets/imgs/foods/sunday.png",
+      "name": "Mega Sunday",
+      "description": "Sunday com várias bolas de sorvete a sua escolha",
+      "price": 21.5,
+      "categoryId": 6
+    },
+    {
+      "id": "chocpop",
+      "imagePath": "assets/imgs/foods/chocpop.png",
+      "name": "Picolé de Brigadeiro",
+      "description": "Picolé de brigadeiro recheado com côco.",
+      "price": 8.5,
+      "categoryId": 6
+    },
+    {
+      "id": "icestd.png",
+      "imagePath": "assets/imgs/foods/icestd.png",
+      "name": "Sorvete Simples",
+      "description": "Clássico sorvete de rua onde todos os sabores são idênticos.",
+      "price": 1.5,
+      "categoryId": 6
+    },
+    {
+      "id": "cup",
+      "imagePath": "assets/imgs/foods/cup.png",
+      "name": "Cup Cake de Choc. Branco",
+      "description": "Cup Cake de chocolate branco",
+      "price": 5.5,
+      "categoryId": 6
+    },
+    {
+      "id": "straw",
+      "imagePath": "assets/imgs/foods/straw.png",
+      "name": "Bolo de Morango",
+      "description": "Bolo recheado e coberto com morangos",
+      "price": 40.5,
+      "categoryId": 6
+    },
+    {
+      "id": "cake",
+      "imagePath": "assets/imgs/foods/cake.png",
+      "name": "Fatia de Bolo",
+      "description": "Fatia de bolo de morango",
+      "price": 5.9,
+      "categoryId": 6
+    }
+  ],
+  "orders": []
+}
