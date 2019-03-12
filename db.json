@@ -4,37 +4,37 @@
       "id":1,
       "cardTitle":"Sanduíche",
       "cardSubtitle":"Sanduíches naturais",
-      "imagem":"assets/imgss/sanduiche-natural.jpg"
+      "imagem":"assets/imgs/sanduiche-natural.jpg"
     },
     {
       "id": 2,
       "cardTitle": "Pães de Queijo",
       "cardSubtitle": "Normal e Recheados",
-      "imagem": "assets/imgss/pao-queijo.jpg"
+      "imagem": "assets/imgs/pao-queijo.jpg"
     },
     {
       "id": 3,
       "cardTitle": "Pizzas",
       "cardSubtitle": "Com bordas e Sem bordas",
-      "imagem": "assets/imgss/pizza.jpg"
+      "imagem": "assets/imgs/pizza.jpg"
     },
     {
       "id": 4,
       "cardTitle": "Chinesa",
       "cardSubtitle": "Quentes e Rolinhos",
-      "imagem": "assets/imgss/chinesa.jpg"
+      "imagem": "assets/imgs/chinesa.jpg"
     },
     {
       "id": 5,
       "cardTitle": "Bebidas",
       "cardSubtitle": "Sucos e Refrigerantes",
-      "imagem": "assets/imgss/suco.jpg"
+      "imagem": "assets/imgs/suco.jpg"
     },
     {
       "id": 6,
       "cardTitle": "Sobremesas",
       "cardSubtitle": "Tortas e Doces",
-      "imagem": "assets/imgss/sobremesa.jpg"
+      "imagem": "assets/imgs/sobremesa.jpg"
     }  
   ],
   "menu": [
