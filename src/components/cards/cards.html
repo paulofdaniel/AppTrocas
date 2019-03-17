@@ -2,12 +2,12 @@
   <div *ngIf="cards.length == 0">
     <span class="card-container__empty">Sem itens no momento :(</span>
   </div>
-  <div class="card" swing-card #mycards1 [ngClass]="c.name" *ngFor="let c of cards">
-    <div class="card__imagem" [ngStyle]="{ 'background-image': 'url(' + c.imageURL + ')'}"></div>
-    <span>{{ c.name }}</span>
-    <p>{{ c.description }}</p>
+  <div class="card" swing-card #mycards1 [ngClass]="card.name" *ngFor="let card of cards">
+    <div class="card__imagem" [ngStyle]="{ 'background-image': 'url(' + card.images[0].url + ')'}"></div>
+    <span>{{ card.name }}</span>
+    <p>{{ card.description }}</p>
     <div class="card__more">
-      <a href="">Ver mais</a>
+      <a href="#" (click)="openProductDetail(card)">Ver mais</a>
     </div>
   </div>
 </div>

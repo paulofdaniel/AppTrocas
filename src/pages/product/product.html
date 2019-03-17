@@ -1,0 +1,19 @@
+<ion-header>
+  <div class="navbar">
+    <div class="navbar__button">
+      <button (click)="back()" class="back-button disable-hover bar-button bar-button-ios back-button-ios bar-button-default bar-button-default-ios show-back-button" ion-button="bar-button" ng-reflect-klass="back-button" ng-reflect-ng-class="back-button-ios" style=""><span class="button-inner"><ion-icon class="back-button-icon icon icon-ios back-button-icon-ios ion-ios-arrow-back" role="img" ng-reflect-klass="back-button-icon" ng-reflect-ng-class="back-button-icon-ios" aria-label="arrow back" ng-reflect-name="ios-arrow-back"></ion-icon><span class="back-button-text back-button-text-ios" ng-reflect-klass="back-button-text" ng-reflect-ng-class="back-button-text-ios" style="transform: translateX(0px);">Back</span></span><div class="button-effect"></div></button>      
+    </div>
+    <div class="navbar__title">
+      <span>{{name}}</span>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager>
+      <ion-slide [ngStyle]="{'background-image':'url(' + image.url + ')'}" *ngFor="let image of images">
+      </ion-slide> 
+  </ion-slides>
+  <p>{{description}}</p>
+
+</ion-content>
