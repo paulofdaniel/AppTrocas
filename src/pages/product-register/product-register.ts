@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProductProvider } from "../../providers/product/product"
 
 /**
  * Generated class for the ProductRegisterPage page.
@@ -15,7 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProductRegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  name: string = "";
+  platform: string = "";
+  genre: string = "";
+  description: string = "";
+  status: string = "";
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public productProvider: ProductProvider) {
+  }
+
+  cadastraProduto(){
+    this.productProvider.addProduct(this.name, this.platform, this.genre, this.description, this.status);
   }
   
 }

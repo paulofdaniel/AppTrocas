@@ -8,7 +8,7 @@
   <ion-navbar>
     <ion-title>Novo item</ion-title>
     <ion-buttons end>
-      <button ion-button color="primary">
+      <button ion-button color="primary" (click)="cadastraProduto()">
         Salvar
       </button>
     </ion-buttons>
@@ -18,25 +18,35 @@
 <ion-content padding>
   <form class="basic-form__form">
     <div class="basic-form__form-item">
-        <input type="text" name="register_title" required/>
+        <input type="text" name="register_title" [(ngModel)]="this.name" required/>
         <label for="register_title">Título</label>
     </div>
+    <div class="select basic-form__form-item">
+        <select name="register_category" [(ngModel)]="this.platform" required>          
+          <option disabled></option>
+          <option value="Playstation">Playstation</option>
+          <option value="Xbox One">Xbox One</option>
+          <option value="Switch">Switch</option>
+          <option value="PC">PC</option>
+        </select>
+        <label for="register_category">Categoria</label>
+    </div>
     <div class="basic-form__form-item">
-        <textarea name="register_description" required></textarea>
+        <textarea name="register_description" [(ngModel)]="this.description" required></textarea>
         <label for="register_description">Descrição (opcional)</label>
     </div>
     <div class="select basic-form__form-item">
-        <select name="register_category" required>          
+        <select name="register_category" [(ngModel)]="this.genre" required>          
           <option disabled></option>
-          <option value="volvo">Ação</option>
-          <option value="saab">Aventura</option>
-          <option value="mercedes">Corrida</option>
-          <option value="audi">RPG</option>
+          <option value="Ação">Ação</option>
+          <option value="Aventura">Aventura</option>
+          <option value="Corrida">Corrida</option>
+          <option value="RPG">RPG</option>
         </select>
         <label for="register_category">Categoria</label>
     </div>
     <div class="select basic-form__form-item">
-      <select name="register_condition" required>          
+      <select name="register_condition" [(ngModel)]="this.status" required>          
         <option disabled></option>
         <option value="volvo">Novo</option>
         <option value="saab">Seminovo</option>

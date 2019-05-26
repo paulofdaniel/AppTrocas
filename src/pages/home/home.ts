@@ -1,6 +1,5 @@
 import { Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { MatchesPage } from '../matches/matches';
 import { OptionsPage } from '../options/options';
 
@@ -26,7 +25,7 @@ export class HomePage {
     this.navCtrl.push(OptionsPage,{});
   }
   ionViewDidLoad() {
-    this.navCtrl.push(LoginPage,{});
+    //this.navCtrl.push(LoginPage,{});
   }
   showMatched(){
     this.matched = true;

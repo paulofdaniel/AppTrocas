@@ -8,6 +8,10 @@ import {
   SwingStackComponent,
   SwingCardComponent} from 'angular2-swing';
 import { ProductPage } from '../../pages/product/product';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { ProductProvider } from '../../providers/product/product';
+import { Product } from '../../providers/product/product.model';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -20,14 +24,14 @@ export class CardsComponent {
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
   @Output() matchedEvent = new EventEmitter<string>();
 
-  cards: Array<any>;
+  cards: any;
   stackConfig: StackConfig;
 
   NumberOfCards() {
     return this.cards.length;
   }
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private productProvider: ProductProvider, public auth: AuthServiceProvider) {
 
     this.stackConfig = {
       allowedDirections: [Direction.LEFT, Direction.RIGHT],
@@ -40,14 +44,11 @@ export class CardsComponent {
       }
     }
 
+    
     this.cards = [
-      {name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]},
-      {name: 'Red Dead Redemption 2', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'}]},
-      {name: 'Beyond Two Souls', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'}]},
-      {name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]},
-      {name: 'Red Dead Redemption 2', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'}]},
-      {name: 'Beyond Two Souls', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'}]} 
+      {name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]}
     ];
+    
 
   }
 
@@ -82,23 +83,33 @@ export class CardsComponent {
     MORE_BUTTON.style.opacity = (1-Math.abs(offset)/280).toString();
   }
 
+
   ngAfterViewInit() {
-    this.swingStack.throwout.subscribe(
-      (event: ThrowEvent) => {
-        this.cards = this.cards.slice(0, -1);
-        if(this.cards.length == 0){
-          this.growBg();
-        }
-      });
-      this.swingStack.throwin.subscribe(
-        (event: DragEvent) => {
-          this.changeCardColor(0);
-      });
-      this.swingStack.dragmove.subscribe(
-        (event: DragEvent) => {
-          this.changeCardColor(event.offset);
+
+    this.productProvider.getProductList().valueChanges().subscribe(
+      data => {
+        this.cards = data;   
+
+        this.swingStack.throwout.subscribe(
+          (event: ThrowEvent) => {
+            this.cards = this.cards.slice(0, -1);
+            if(this.cards.length == 0){
+              this.growBg();
+            }
+          });
+          this.swingStack.throwin.subscribe(
+            (event: DragEvent) => {
+              this.changeCardColor(0);
+          });
+          this.swingStack.dragmove.subscribe(
+            (event: DragEvent) => {
+              this.changeCardColor(event.offset);
+          }
+        );
       }
-    );
+    )
+
+    
   }
   
   // This method is called by hooking up the event
@@ -106,7 +117,6 @@ export class CardsComponent {
   onThrowOut(event: ThrowEvent) {
     this.matchedTeste();
   }
-
 
   matchedTeste() {
     this.matchedEvent.emit();

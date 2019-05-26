@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SwingModule } from 'angular2-swing';
 import { HttpClientModule } from '@angular/common/http'
 
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProductPage } from '../pages/product/product';
@@ -18,7 +17,13 @@ import { OptionsPage } from '../pages/options/options';
 
 import { CardsComponent } from '../components/cards/cards';
 import { ProductSelectorComponent } from '../components/product-selector/product-selector';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { firebaseConfig } from '../config';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { ProductProvider } from '../providers/product/product';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,9 @@ import { ProductSelectorComponent } from '../components/product-selector/product
     BrowserModule,
     IonicModule.forRoot(MyApp),
     SwingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig.fire),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +60,10 @@ import { ProductSelectorComponent } from '../components/product-selector/product
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFireAuth,
+    AuthServiceProvider,
+    ProductProvider
   ]
 })
 export class AppModule {}

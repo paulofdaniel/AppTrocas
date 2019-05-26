@@ -12,14 +12,14 @@
     <form *ngIf="!signUp" class="login-content__form">
       <div class="login-content__form-item">
           <label for="login_email">E-mail</label>
-          <input type="text" name="login_email" id="" value="" />
+          <input type="text" name="login_email" [(ngModel)]="this.loginEmail"/>
       </div>
       <div class="login-content__form-item">
           <label for="login_senha">Senha</label>
-          <input type="password" name="login_senha" id="" value="" />
+          <input type="password" name="login_senha" [(ngModel)]="this.loginPassword" />
       </div>
       <div class="login-content__form-item">
-          <input type="submit" value="Entrar" (click)="entrar()"/>
+          <button (click)="login()"><span *ngIf="!this.loading">Entrar</span> <img *ngIf="this.loading" src="../../assets/imgs/loading.gif"></button>
       </div>
       <span (click)="loginOrSingUp()">Não tem cadastro? <u>Cadastre-se!</u></span>
     </form>
@@ -27,18 +27,18 @@
     <form *ngIf="signUp" class="login-content__form">
       <div class="login-content__form-item">
         <label for="login_name">Nome</label>
-        <input type="text" name="login_name" id="" value="" />
+        <input type="text" name="login_name" [(ngModel)]="this.signUpName"/>
     </div>
       <div class="login-content__form-item">
           <label for="login_email">E-mail</label>
-          <input type="text" name="login_email" id="" value="" />
+          <input type="text" name="login_email" [(ngModel)]="this.signUpEmail"/>
       </div>
       <div class="login-content__form-item">
           <label for="login_senha">Senha</label>
-          <input type="password" name="login_senha" id="" value="" />
+          <input type="password" name="login_senha" [(ngModel)]="this.signUpPassword"/>
       </div>
       <div class="login-content__form-item">
-          <input type="submit" value="Cadastrar" (click)="entrar()"/>
+          <button (click)="signUpUser()"><span *ngIf="!this.loading">Cadastrar</span> <img *ngIf="this.loading" src="../../assets/imgs/loading.gif"></button>
       </div>
       <span (click)="loginOrSingUp()">Já tem cadastro? <u>Logar!</u></span>
     </form>
