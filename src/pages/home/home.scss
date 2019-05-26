@@ -19,6 +19,10 @@ page-home {
             position: absolute;
             margin-left: 10px;
             margin-top: -10px;
+            transition: .3s ease;
+            &-pop{
+                transform: scale(1.6);
+            }
         }        
     }
 }
@@ -36,6 +40,55 @@ page-home {
     transition: .5s ease;
 }
 
+.matched{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: map-get($colors, black-90);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px;
+    position: absolute;
+    z-index: 999;
+    transition: .6s ease;
+    &__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            object-fit: cover;
+            object-position: center;
+        }
+        span{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            font-weight: 900;
+        }
+        button{
+            font-size: 20px;
+            color: map-get($colors, primary);
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-weight: 900
+        }
+    } 
+    &-closing{
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: 90% 5%;
+    }
+}
 
 
 

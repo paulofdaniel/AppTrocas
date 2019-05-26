@@ -31,10 +31,15 @@
     display: none; 
 }
 
+ion-header{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+//Navbar da home
 .navbar{
     height: 64px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     color: map-get($colors, dark);
@@ -53,7 +58,7 @@
         font-size: 18px;
         font-weight: bold;
         text-align: center;
-        padding: 0 16px;
+        padding: 0 8px;
         white-space: nowrap;
         text-overflow: ellipsis;
         display: block;
@@ -63,3 +68,126 @@
 .scroll-content{
     padding: 0 32px;
 }
+
+//AJUSTES NAS MODAIS
+
+ion-backdrop{
+    opacity: .8!important;
+}
+
+.alert-md .alert-wrapper{
+    border-radius: 12px;
+}
+
+.alert-wrapper {
+    min-width: 80%;
+}
+
+.alert-md .alert-radio-group, .alert-md .alert-checkbox-group,
+.alert-ios .alert-radio-group, .alert-ios .alert-checkbox-group {
+    position: relative;
+    overflow: auto;
+    max-height: 70vh;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+}
+
+
+.basic-form{
+    &__form{
+        input:focus + label, select:focus + label, textarea:focus + label {
+            font-size: 12px;
+            margin-top: 6px;
+            color: map-get($colors, primary);
+        }
+        input:valid + label, select:valid + label, textarea:valid + label {
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        &-item{
+            position: relative;
+            label{
+                position: absolute;
+                margin-left: 16px;
+                margin-top: 18px;
+                font-size: 16px;
+                color: map-get($colors, dark-gray);
+                font-weight: 500;
+                top: 0;
+                transition: .25s ease;
+                pointer-events: none;
+            }
+            input, select, textarea{
+                width: 100%;
+                height: 54px;
+                font-size: 16px;
+                background-color: map-get($colors, light-gray);
+                border: none;
+                border-bottom: 1px solid map-get($colors, dark-gray);
+                border-radius: 6px 6px 0 0;
+                margin-bottom: 22px;
+                padding: 24px 16px 10px 16px;
+                &:focus{
+                    border-bottom: 2px solid map-get($colors, primary);
+                }
+            }
+            textarea{
+                height: 120px;
+                resize: none;
+            }
+            &.select:before {
+                content:"\2bc6";
+                font-family:'FontAwesome';
+                position: absolute;
+                top: 17px;
+                right: 15px;
+                pointer-events: none;
+            }
+            select{
+                padding-right: 15px;
+                padding-left: 16px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+            .image-upload{
+                &__container{
+                    position: relative;
+                }
+                width: 104px;
+                height: 104px;
+                border-radius: 6px;
+                position: relative;
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+                color: map-get($colors, dark-gray);
+                box-shadow: 0 3px 6px map-get($colors, black-30);
+                margin-bottom: 25px
+            }
+            .chips{
+                &__container{
+                    position: relative;
+                }
+                padding: 10px 20px;
+                background-color: map-get($colors, black-15);
+                font-size: 16px;
+                border-radius: 20px;
+                color: map-get($colors, dark-gray);
+                margin-right: 10px;
+                display: inline-block;
+                margin-top: 15px;
+                &--active{
+                    color: white;
+                    background-color: map-get($colors, primary);
+                }
+            }
+            .outer-label{
+                position: relative;
+            }
+        }
+    }
+}
+

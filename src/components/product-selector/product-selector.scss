@@ -1,0 +1,133 @@
+product-selector{
+    width: calc(100% - 128px);
+}
+.product-selector {
+    &__title{
+        font-size: 12px!important;
+        color: map-get($colors, dark-gray);
+        display: block;
+    }
+    &__down{
+        width: calc(100% - 144px);
+        text-align: center;
+        position: absolute;
+        svg{
+            width: 30px;
+            height: 30px;
+            padding-top: 4px;
+            background-color: white;
+            border-radius: 100%;
+            color: map-get($colors, dark);
+            box-shadow: 0 4px 8px map-get($colors, black-15);
+        }
+        &:active{
+            opacity: .5;
+        }
+    }
+    &__modal{
+        animation: fadein .3s ease forwards;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: map-get($colors, black-80);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 10;
+        &-header{
+            width: calc(100vw - 64px);
+            border-radius: 10px 10px 0 0;
+            background-color: white;
+            padding: 16px 0;
+            box-shadow: 0 4px 4px map-get($colors, black-15);
+            z-index: 1;
+        }
+        &-content{
+            width: calc(100vw - 64px);
+            padding: 16px 0;
+            max-height: 60%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            ul{
+                padding: 0;
+                margin-top: 0;
+                li{
+                    display: flex;
+                    align-items: center;
+                    padding: 6px 16px;
+                    transition: .25s ease;
+                    position: relative;
+                    div{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 25px;
+                        background-color: map-get($colors, primary);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        background-size: cover;
+                        background-position: center;
+                        &.item-selected:after{
+                            content: "\2714";
+                            position: absolute;
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 25px;
+                            background-color: map-get($colors, primary-70);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            z-index: 9999999;
+                        }
+                    }
+                    span{
+                        font-size: 14px;
+                        margin-left: 15px;
+                        max-width: calc(100% - 95px);
+                        white-space: nowrap; 
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        border-radius: 100%;
+                        padding: 20px;
+                        position: absolute;
+                        right: 0px;
+                        z-index: 999;
+                        svg{
+                            width: 20px;
+                        }
+                        &:active{
+                            background-color: map-get($colors, light-green);
+                        }
+                    }
+                    &:active{
+                        background-color: map-get($colors, light-green);
+                    }
+                }
+            }
+        }
+        &-footer{
+            width: calc(100vw - 64px);
+            border-radius: 0 0 10px 10px;
+            background-color: white;
+            padding: 12px 20px 0 0;
+            text-align: right;
+        }
+    }
+        
+}
+
+@keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+  }

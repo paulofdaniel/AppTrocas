@@ -1,0 +1,111 @@
+page-chat {
+    .chat{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        &__messages-container{
+            height: 100%;
+            max-height: calc(100% - 50px);
+            overflow-y: scroll;
+            ul{
+                padding: 0;
+            }
+        }
+        &__message{
+            list-style: none;
+            display: flex;
+            margin: 15px 0;
+            animation-name: fade-in;
+            animation-duration: .5s;
+            span{
+                display: inline-block;
+                max-width: 60%;
+                margin: 0 10px;
+                padding: 15px;
+                border-radius: 4px;
+            }
+            div{
+                width: 40px;
+                height: 40px;
+                background-color: gray;
+                border-radius: 100%;
+            }
+            &--left{
+                flex-direction: row;
+                span{
+                    position: relative;
+                    background-color: #eee;
+                    &:before{
+                        content: "";
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 2px;
+                        background-color: #eee;
+                        position: absolute;
+                        transform: rotate(45deg);
+                        margin-left: -20px;
+                    }
+                }
+                
+            }
+            &--right{
+                flex-direction: row-reverse;
+                span{
+                    position: relative;
+                    background-color: map-get($colors, cool-green);
+                    color: white;
+                    &:before{
+                        content: "";
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 2px;
+                        background-color: map-get($colors, cool-green);
+                        position: absolute;
+                        transform: rotate(45deg);
+                        right: -6px;
+                    }
+                }                
+            }            
+        }
+        &__typing-area{
+            position: absolute;
+            width: 100vw;
+            left: 0;
+            bottom: 0;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 -2px 6px map-get($colors, black-15);
+            ion-input{
+                border: none;
+                width: calc(100% - 30px);
+                height: 50px;
+                padding-top: 3px;
+            }
+            button{
+                width: 30px;
+                height: 30px;
+                border-radius: 15px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: map-get($colors, cool-green);
+                svg{
+                    width: 14px;
+                    margin-left: -2px;
+                    margin-top: 1px;
+                    color: white;
+                }
+            }
+        }
+    }
+    .scroll-content{
+        padding: 16px !important;
+    }
+}
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

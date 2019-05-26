@@ -10,8 +10,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ProductPage } from '../pages/product/product';
+import { LoginPage } from '../pages/login/login';
+import { ProductRegisterPage } from '../pages/product-register/product-register';
+import { ChatPage } from '../pages/chat/chat';
+import { MatchesPage } from '../pages/matches/matches';
+import { OptionsPage } from '../pages/options/options';
 
 import { CardsComponent } from '../components/cards/cards';
+import { ProductSelectorComponent } from '../components/product-selector/product-selector';
 
 
 @NgModule({
@@ -19,7 +25,13 @@ import { CardsComponent } from '../components/cards/cards';
     MyApp,
     HomePage,
     CardsComponent,
-    ProductPage
+    ProductSelectorComponent,
+    ProductPage,
+    LoginPage,
+    ProductRegisterPage,
+    MatchesPage,
+    ChatPage,
+    OptionsPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +43,12 @@ import { CardsComponent } from '../components/cards/cards';
   entryComponents: [
     MyApp,
     HomePage,
-    ProductPage
+    ProductPage,
+    LoginPage,
+    ProductRegisterPage,
+    MatchesPage,
+    ChatPage,
+    OptionsPage
   ],
   providers: [
     StatusBar,

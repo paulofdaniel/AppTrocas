@@ -1,0 +1,36 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Red Dead Redemption PS4</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more" (click)="openMoreModal()"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+
+<ion-content padding>
+  <div class="chat">
+    <div #scrollMe class="chat__messages-container">
+      <ul>
+        <li *ngFor="let item of messages" [ngClass]="{'chat__message--left': item.senderID == 1, 'chat__message--right': item.senderID == 0 }" class="chat__message">
+          <div></div>
+          <span>{{ item.message }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="chat__typing-area">
+      <ion-input #chatInput (keyup.enter)="sendMessage(this)" type="text" [(ngModel)]="message" id="input" placeholder="Digite uma mensagem..."></ion-input>
+      <button (click)="sendMessage()">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-arrow" class="svg-inline--fa fa-location-arrow fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"></path></svg>
+      </button>
+    </div>
+  </div>
+</ion-content>

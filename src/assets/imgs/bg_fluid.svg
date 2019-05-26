@@ -1,3 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360.127" height="360.576" viewBox="0 0 360.127 360.576">
-  <path id="Caminho_1087" data-name="Caminho 1087" d="M4583,1133.492s-.012-7.014,0-16.742c4.963-25.82,23.438-77.492,91.856-74.474,90.981,4.014,143.163,37.463,224.778,0,19.343-8.879,32.963-10.233,43.366-6.859.16.186,0,75.4,0,75.4v246.322s.039,9.119,0,9.113c-.006.006.036,12.054,0,12.01.623-.172-18.516,16.054-57.792-15.314s-168.085-46.182-215.515-7.489c-36.2,28.292-54.5,39.525-86.693,38.8,0-15.846-.127-79.046,0-79.266C4583.2,1314.888,4583,1133.492,4583,1133.492Z" transform="translate(-4582.943 -1033.722)" fill="#00d3b0"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 360.1 360.6" style="enable-background:new 0 0 360.1 360.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Caminho_1087_1_);}
+</style>
+<linearGradient id="Caminho_1087_1_" gradientUnits="userSpaceOnUse" x1="10.1481" y1="370.6281" x2="369.5692" y2="11.207">
+	<stop  offset="0" style="stop-color:#00D38E"/>
+	<stop  offset="1" style="stop-color:#00D6C0"/>
+</linearGradient>
+<path id="Caminho_1087" class="st0" d="M0.1,99.8c0,0,0-7,0-16.7C5,57.2,23.5,5.5,91.9,8.6c91,4,143.2,37.5,224.8,0
+	c19.3-8.9,33-10.2,43.4-6.9c0.2,0.2,0,75.4,0,75.4v246.3c0,0,0,9.1,0,9.1c0,0,0,12.1,0,12c0.6-0.2-18.5,16.1-57.8-15.3
+	S134.2,283,86.8,321.7C50.5,350,32.3,361.3,0.1,360.5c0-15.8-0.1-79,0-79.3C0.3,281.2,0.1,99.8,0.1,99.8z"/>
 </svg>

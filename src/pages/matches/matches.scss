@@ -1,0 +1,68 @@
+page-matches {
+    .scroll-content{
+        padding: 16px 0!important;
+    }
+
+    .matches-list{
+        padding: 0;
+        margin-top: 0;
+        &__item{
+            display: flex;
+            padding: 6px 32px;
+            transition: .25s ease;
+            position: relative;
+            width: 100vw;
+            &-image{
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+                background-color: map-get($colors, primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                background-size: cover;
+                background-position: center;
+            }
+            &-text{
+                width: calc(100% - 60px);
+                span{
+                        max-width: 100%;
+                        white-space: nowrap; 
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: block;
+                    &:first-of-type{
+                        font-size: 16px;
+                        margin: 6px 0 0 15px;
+                        max-width: 90%;
+                        font-weight: 800;
+                    }
+                    &:last-of-type{
+                        font-size: 14px;
+                        margin: 3px 0 0 15px;
+                    }
+                }
+            }
+            
+            button{
+                background-color: transparent;
+                border: none;
+                border-radius: 100%;
+                padding: 20px;
+                position: absolute;
+                right: 0px;
+                z-index: 999;
+                svg{
+                    width: 20px;
+                }
+                &:active{
+                    background-color: map-get($colors, light-green);
+                }
+            }
+            &:active{
+                background-color: map-get($colors, light-green);
+            }
+        }
+    }
+}
