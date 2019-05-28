@@ -9,11 +9,11 @@ class Product {
         public genre: string,
         public description: string,
         public status: string,
-        public images: string,
-        public exchangeFor: number,
-        public likes: string,
-        public disLikes: string,
-        public matches: string,
+        public images,
+        public exchangeFor,
+        public likes,
+        public disLikes,
+        public matches
         ){}
     }
 

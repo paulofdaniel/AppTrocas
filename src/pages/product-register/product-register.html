@@ -8,7 +8,7 @@
   <ion-navbar>
     <ion-title>Novo item</ion-title>
     <ion-buttons end>
-      <button ion-button color="primary" (click)="cadastraProduto()">
+      <button ion-button color="primary" (click)="saveNewProduct()">
         Salvar
       </button>
     </ion-buttons>
@@ -52,15 +52,29 @@
         <option value="saab">Seminovo</option>
         <option value="mercedes">No estado</option>
       </select>
-      <label for="register_condition">Condição</label>
+      <label for="register_condition">Condição</label> 
   </div>
     <div class="basic-form__form-item">
-      <label class="outer-label">Imagens (0 de 3)</label>
+      <label class="outer-label">Imagens ({{imgCount}} de 3)</label>
       <div class="image-upload__container">
-          <div class="image-upload">+</div>
-      </div>
-      
+
+        <div *ngIf="imgCount >=1" class="image-upload" (click)="removeImage(1)" [ngStyle]="{ 'background-image': 'url(' + imgURL[1] + ')'}"></div>
+        <div *ngIf="imgCount >=2" class="image-upload" (click)="removeImage(2)" [ngStyle]="{ 'background-image': 'url(' + imgURL[2] + ')'}"></div>
+        <div *ngIf="imgCount >=3" class="image-upload" (click)="removeImage(3)" [ngStyle]="{ 'background-image': 'url(' + imgURL[3] + ')'}"></div>
+
+        <div *ngIf="imgCount == 0" class="image-upload" (click)="file0.click()">+</div>
+        <div *ngIf="imgCount == 1" class="image-upload" (click)="file1.click()">+</div>
+        <div *ngIf="imgCount == 2" class="image-upload" (click)="file2.click()">+</div>
+
+        <input type="file" name="fileupload" (change)="imagePreview(file0.files)" #file0 hidden>
+        <input type="file" name="fileupload" (change)="imagePreview(file1.files)" #file1 hidden>
+        <input type="file" name="fileupload" (change)="imagePreview(file2.files)" #file2 hidden>
+        
+      </div>      
     </div>
+
+    
+
     <div class="basic-form__form-item">
         <label class="outer-label" for="">Troca por</label>
         <div class="chips__container">

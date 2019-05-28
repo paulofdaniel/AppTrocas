@@ -4,7 +4,7 @@
   </div>
   <div class="card" swing-card #mycards1 [ngClass]="card.name" *ngFor="let card of cards">
     <div class="card__overlay"></div>
-    <div class="card__imagem" [ngStyle]="{ 'background-image': 'url(' + card.images[0].url + ')'}"></div>
+    <div class="card__imagem" [ngStyle]="{ 'background-image': 'url(' + card.images[0] + ')'}"></div>
     <span>{{ card.name }}</span>
     <p>{{ card.description }}</p>
     <div class="card__more">

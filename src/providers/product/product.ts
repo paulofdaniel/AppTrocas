@@ -31,7 +31,7 @@ export class ProductProvider {
     console.log('Hello ProductProvider Provider');
   }
 
-  addProduct(name:string, platform:string, genre:string, description:string, status:string): Promise<void> {
+  addProduct(name:string, platform:string, genre:string, description:string, status:string, imgUrl:any[]): Promise<void> {
     
     let id = this.firestore.createId();
 
@@ -45,15 +45,15 @@ export class ProductProvider {
       "genre": genre,
       "description": description,
       "status": status,
-      "images": Object.assign({}, this.images),
+      "images": Object.assign({}, imgUrl),
       "exchangeFor": Object.assign({}, this.exchangeFor),
       "likes": Object.assign({}, this.likes),
       "disLikes": Object.assign({}, this.likes),
-      "matches": Object.assign({}, this.matches)  
+      "matches": Object.assign({}, this.matches)
 
     }
-
     return this.firestore.doc<Product>(`products/${id}`).set(product);
+    
   }
 
   getProductList(): AngularFirestoreCollection<Product> {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProductProvider } from "../../providers/product/product"
 
+
 /**
  * Generated class for the ProductRegisterPage page.
  *
@@ -21,12 +22,60 @@ export class ProductRegisterPage {
   genre: string = "";
   description: string = "";
   status: string = "";
+
+  public imagePath;
+  imgURL: any[] = ["","","",""];
+  imgCount: number = 0;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public productProvider: ProductProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public productProvider: ProductProvider) {
   }
 
-  cadastraProduto(){
-    this.productProvider.addProduct(this.name, this.platform, this.genre, this.description, this.status);
+
+
+  saveNewProduct(){
+
+    this.productProvider.addProduct(this.name, this.platform, this.genre,
+                                    this.description, this.status,
+                                    this.imgURL.filter(function (el) {
+                                        return el != "";})
+                                    );
+  }
+
+  imagePreview(files) {
+
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL[this.imgCount] = reader.result; 
+    }
+    this.imgCount++;
+    
+  }
+
+  removeImage(id: number){
+    if(id == 1){
+      this.imgURL[1] = this.imgURL[2];
+      this.imgURL[2] = this.imgURL[3];
+      this.imgURL[3] = "";
+    }else if(id == 2){
+      this.imgURL[2] = this.imgURL[3];
+      this.imgURL[3] = "";
+    }else if(id == 3){
+      this.imgURL[3] = "";
+    }
+    this.imgCount--;
+    console.log(this.imgURL)
   }
   
 }

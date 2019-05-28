@@ -153,6 +153,7 @@ ion-backdrop{
             .image-upload{
                 &__container{
                     position: relative;
+                    display: flex;
                 }
                 width: 104px;
                 height: 104px;
@@ -165,7 +166,12 @@ ion-backdrop{
                 font-size: 35px;
                 color: map-get($colors, dark-gray);
                 box-shadow: 0 3px 6px map-get($colors, black-30);
-                margin-bottom: 25px
+                margin-bottom: 25px;
+                margin-right: 16px;
+                background-size: cover;
+                &:last-of-type{
+                    margin-right: 0;
+                }
             }
             .chips{
                 &__container{

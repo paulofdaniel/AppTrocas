@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductProvider } from '../providers/product/product';
 
+
 @NgModule({
   declarations: [
     MyApp,
