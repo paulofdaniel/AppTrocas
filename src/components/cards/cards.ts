@@ -115,10 +115,10 @@ export class CardsComponent {
   // This method is called by hooking up the event
   // on the HTML element - see the template above
   onThrowOut(event: ThrowEvent) {
-    this.matchedTeste();
+    this.matchedEmmit();
   }
 
-  matchedTeste() {
+  matchedEmmit() {
     this.matchedEvent.emit();
   }
 

@@ -19,9 +19,30 @@
 
 <ion-content padding>
   <ion-slides pager>
-      <ion-slide [ngStyle]="{'background-image':'url(' + image.url + ')'}" *ngFor="let image of images">
-      </ion-slide> 
+      <ion-slide *ngIf="images[0] != null" [ngStyle]="{'background-image':'url(' + images[0] + ')'}"></ion-slide>
+      <ion-slide *ngIf="images[1] != null" [ngStyle]="{'background-image':'url(' + images[1] + ')'}"></ion-slide>
+      <ion-slide *ngIf="images[2] != null" [ngStyle]="{'background-image':'url(' + images[2] + ')'}"></ion-slide>
   </ion-slides>
-  <p>{{description}}</p>
+  <div class="product__info">
+    <div class="col">
+      <span class="product__info-title">Plataforma</span>
+      <span>{{item.platform}}</span>
+    </div>
+    <div class="col">
+      <span class="product__info-title">Gênero</span>
+      <span>{{item.genre}}</span>
+    </div>    
+  </div>
+  <div class="product__info">
+    <div class="col">
+      <span class="product__info-title">Estado</span>
+      <span>{{item.status}}</span>
+    </div>
+    <div class="col">
+      <span class="product__info-title">Localização</span>
+      <span>{{item.location}}</span>
+    </div>    
+  </div>
+  <p>{{ description }}</p>
 
 </ion-content>
