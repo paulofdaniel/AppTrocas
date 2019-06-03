@@ -22,6 +22,7 @@ export class ProductRegisterPage {
   genre: string = "";
   description: string = "";
   status: string = "";
+  exchangeFor: boolean[] = [false,false,false,false,false];
 
   public imagePath;
   imgURL: any[] = ["","","",""];
@@ -39,8 +40,9 @@ export class ProductRegisterPage {
     this.productProvider.addProduct(this.name, this.platform, this.genre,
                                     this.description, this.status,
                                     this.imgURL.filter(function (el) {
-                                        return el != "";})
+                                        return el != "";}),this.exchangeFor
                                     );
+    this.navCtrl.pop();
   }
 
   imagePreview(files) {
@@ -75,7 +77,14 @@ export class ProductRegisterPage {
       this.imgURL[3] = "";
     }
     this.imgCount--;
-    console.log(this.imgURL)
+  }
+
+  exchangeForCategory(cod: number){
+    if(this.exchangeFor[cod] == false){
+      this.exchangeFor[cod] = true;
+    }else{
+      this.exchangeFor[cod] = false;
+    }    
   }
   
 }

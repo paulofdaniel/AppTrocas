@@ -107,9 +107,7 @@ export class CardsComponent {
           }
         );
       }
-    )
-
-    
+    )    
   }
   
   // This method is called by hooking up the event

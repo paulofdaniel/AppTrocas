@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductProvider } from '../providers/product/product';
+import { UserProvider } from '../providers/user/user';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { ProductProvider } from '../providers/product/product';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     AuthServiceProvider,
-    ProductProvider
+    ProductProvider,
+    UserProvider
   ]
 })
 export class AppModule {}

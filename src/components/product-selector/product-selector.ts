@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductRegisterPage } from '../../pages/product-register/product-register';
+import { ProductProvider } from '../../providers/product/product';
 
 /**
  * Generated class for the ProductSelectorComponent component.
@@ -19,14 +20,9 @@ export class ProductSelectorComponent {
   meusItens: Array<any>;
   selectedItems: number = 0;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private productProvider: ProductProvider) {
     this.meusItens = [
-      {id: 0, name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: false, images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]},
-      {id: 1, name: 'Red Dead Redemption 2 Nome Gigante', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: true, images: [{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'}]},
-      {id: 2, name: 'Beyond Two Souls', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: false, images: [{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'}]},
-      {id: 3, name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: false, images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]},
-      {id: 4, name: 'Red Dead Redemption 2', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: false, images: [{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'},{url:'https://img.olx.com.br/images/57/579902020989761.jpg'}]},
-      {id: 5, name: 'Beyond Two Souls', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', selected: false, images: [{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'},{url:'https://img.olx.com.br/thumbs256x256/32/328905014799748.jpg'}]} 
+      {id: 0, name: ''}
     ];
   }
 
@@ -67,5 +63,10 @@ export class ProductSelectorComponent {
 
   ngOnInit(){
     this.selectedName();
+    this.productProvider.getProductList().valueChanges().subscribe(
+      data => {
+        this.meusItens = data;
+      }
+    )
   }
 }

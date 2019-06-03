@@ -15,13 +15,7 @@ import { AuthServiceProvider } from '../auth-service/auth-service';
 export class ProductProvider {
 
   public locationId: number = 1;
-  //public name: string = "Spider-Man";
-  //public platform: string = "PS4";
-  //public genre: string = "Action";
-  //public description: string = "Pouco porco e mais aranha.";
-  //public status: string = "Novinho";
-  public images: string[] = ["abc.jpg", "123.png"];
-  public exchangeFor: number[] = [2,3,5];
+
   public likes: string[] = ["0fds5466af54f","j8h6g5dr9ss"];
   public disLikes: string[] = ["0fds5466af54f","j8h6g5dr9ss"];
   public matches: string[] = ["0fds5466af54f","j8h6g5dr9ss"];
@@ -31,12 +25,11 @@ export class ProductProvider {
     console.log('Hello ProductProvider Provider');
   }
 
-  addProduct(name:string, platform:string, genre:string, description:string, status:string, imgUrl:any[]): Promise<void> {
+  addProduct(name:string, platform:string, genre:string, description:string, status:string, imgUrl:any[], exchangeFor:boolean[]): Promise<void> {
     
     let id = this.firestore.createId();
 
     let product = {
-
       "userEmail": this.auth.getEmail(),
       "locationId": 1,
       "date": new Date().toISOString(),
@@ -46,21 +39,24 @@ export class ProductProvider {
       "description": description,
       "status": status,
       "images": Object.assign({}, imgUrl),
-      "exchangeFor": Object.assign({}, this.exchangeFor),
+      "exchangeFor": Object.assign({}, exchangeFor),
       "likes": Object.assign({}, this.likes),
       "disLikes": Object.assign({}, this.likes),
       "matches": Object.assign({}, this.matches)
-
     }
     return this.firestore.doc<Product>(`products/${id}`).set(product);
     
   }
 
-  getProductList(): AngularFirestoreCollection<Product> {
-    
+  getProductList(): AngularFirestoreCollection<Product> {    
     return this.firestore.collection(`products`, ref => ref.where(
       'locationId', '==', this.locationId).limit(20).orderBy('date', "desc")
-    );
- 
+    ); 
+  }
+
+  getMyProductList(): AngularFirestoreCollection<Product> {    
+    return this.firestore.collection(`products`, ref => ref.where(
+      'userEmail', '==', this.auth.getEmail()).orderBy('date', "desc")
+    ); 
   }
 }

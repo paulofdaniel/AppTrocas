@@ -10,7 +10,7 @@
     <ion-buttons end>
       <button ion-button color="primary" (click)="saveNewProduct()">
         Salvar
-      </button>
+      </button> 
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -78,10 +78,10 @@
     <div class="basic-form__form-item">
         <label class="outer-label" for="">Troca por</label>
         <div class="chips__container">
-            <span class="chips">Ação</span>
-            <span class="chips chips--active">Aventura</span>
-            <span class="chips">Corrida</span>
-            <span class="chips">RPG</span>
+            <span [ngClass]="{'chips--active': exchangeFor[0] == true}" class="chips" (click)="exchangeForCategory(0)">Ação</span>
+            <span [ngClass]="{'chips--active': exchangeFor[1] == true}" class="chips" (click)="exchangeForCategory(1)">Aventura</span>
+            <span [ngClass]="{'chips--active': exchangeFor[2] == true}" class="chips" (click)="exchangeForCategory(2)">Corrida</span>
+            <span [ngClass]="{'chips--active': exchangeFor[3] == true}" class="chips" (click)="exchangeForCategory(3)">RPG</span>
         </div>
     </div>
 
