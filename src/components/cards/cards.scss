@@ -68,6 +68,7 @@
         padding: 0 16px;
         height: calc(40% - 105px);
         overflow: hidden;
+        line-clamp: 2;
     }
     &__more{
         width: 100%;
