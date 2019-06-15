@@ -22,7 +22,6 @@ export class LoginPage {
   signUp: boolean = false;
   loginEmail: string = "";
   loginPassword: string ="";
-  signUpName: string = "";
   signUpEmail: string = "";
   signUpPassword: string = "";
   loading: boolean = false;
@@ -56,7 +55,6 @@ export class LoginPage {
 
   signUpUser() {
     let credentials = {
-      name: this.signUpName,
       email: this.signUpEmail,
       password: this.signUpPassword
       };

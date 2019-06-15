@@ -1,6 +1,7 @@
 class Product {
 
     constructor(
+        public id: string,
         public userEmail: string,
         public locationId: number,
         public date: string,

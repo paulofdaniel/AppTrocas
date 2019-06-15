@@ -10,8 +10,6 @@ import {
 import { ProductPage } from '../../pages/product/product';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ProductProvider } from '../../providers/product/product';
-import { Product } from '../../providers/product/product.model';
-import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -24,8 +22,9 @@ export class CardsComponent {
   @ViewChildren('mycards1') swingCards: QueryList<SwingCardComponent>;
   @Output() matchedEvent = new EventEmitter<string>();
 
-  cards: any;
+  cards: any = [];
   stackConfig: StackConfig;
+  userEmail = this.auth.getEmail();
 
   NumberOfCards() {
     return this.cards.length;
@@ -44,11 +43,11 @@ export class CardsComponent {
       }
     }
 
-    
+    /*
     this.cards = [
-      {name: 'Spider-Man PS4', description: 'Mussum Ipsum, cacilds vidis litro abertis. Nec orci ornare consequat. Praesent lacinia ultrices consectetur Sed non ipsum felis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! ', images: [{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'},{url:'https://img.olx.com.br/images/46/464919016249066.jpg'}]}
+      {name: ' ', description: '', images: [{url:''}]}
     ];
-    
+    */
 
   }
 
@@ -88,7 +87,12 @@ export class CardsComponent {
 
     this.productProvider.getProductList().valueChanges().subscribe(
       data => {
-        this.cards = data;   
+        
+        data.forEach(e=>{
+          if(e.userEmail != this.userEmail){
+            this.cards.push(e)
+          }
+        });
 
         this.swingStack.throwout.subscribe(
           (event: ThrowEvent) => {

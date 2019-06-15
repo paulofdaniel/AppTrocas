@@ -40,7 +40,6 @@ export class ProductSelectorComponent {
   }
 
   edit(id: number){
-    console.log(id)
     event.stopPropagation();
   }
 

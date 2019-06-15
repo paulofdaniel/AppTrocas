@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MatchesPage } from '../matches/matches';
 import { OptionsPage } from '../options/options';
-
+import { UserProvider } from '../../providers/user/user'
 
 @Component({
   selector: 'page-home',
@@ -15,17 +15,22 @@ export class HomePage {
   bubblePopAnimation: boolean = false;
   bubbleValue: number = 9;
   
-  constructor(public navCtrl: NavController) {
+  constructor(private userProvider: UserProvider, public navCtrl: NavController) {
 
   }
+
   abreMatches(){
     this.navCtrl.push(MatchesPage,{});
   }
   abreOptions(){
     this.navCtrl.push(OptionsPage,{});
   }
-  ionViewDidLoad() {
-    //this.navCtrl.push(LoginPage,{});
+  ionViewDidLoad() {    
+    this.userProvider.getUser().valueChanges().subscribe(e=>{
+      if(e.length==0){
+        this.navCtrl.push(OptionsPage,{'newUser': true});
+      }
+    })
   }
   showMatched(){
     this.matched = true;

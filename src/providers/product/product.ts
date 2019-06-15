@@ -22,7 +22,6 @@ export class ProductProvider {
 
   constructor(public http: HttpClient, public firestore: AngularFirestore, private auth:
     AuthServiceProvider) {
-    console.log('Hello ProductProvider Provider');
   }
 
   addProduct(name:string, platform:string, genre:string, description:string, status:string, imgUrl:any[], exchangeFor:boolean[]): Promise<void> {
@@ -30,6 +29,7 @@ export class ProductProvider {
     let id = this.firestore.createId();
 
     let product = {
+      "id": id,
       "userEmail": this.auth.getEmail(),
       "locationId": 1,
       "date": new Date().toISOString(),
