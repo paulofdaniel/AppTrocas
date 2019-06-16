@@ -42,25 +42,7 @@ export class UserProvider {
   }
 
   updateUser(name:string, locationId:number, stateId: number): Promise<void> {
-
-    this.getUser().valueChanges().subscribe(e=>{
-      e.forEach(u=>{
-        this.chats = u.chats
-        this.rate = u.rate
-      });
-    });
-
-    let user = {
-      "email": this.email,
-      "name": name,
-      "locationId": locationId,
-      "stateId": stateId,
-      "rate": 0,
-      "chats": Object.assign({}, this.chats)
-    }
-
-    return this.firestore.doc<User>(`users/${this.email}`).set(user);
+    return this.firestore.doc<User>(`users/${this.email}`).update({"name":name,"locationId":locationId, "stateId":stateId});
   }
-
 
 }

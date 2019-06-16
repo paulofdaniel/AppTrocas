@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { ProductProvider } from '../providers/product/product';
 import { UserProvider } from '../providers/user/user';
+import { ChatProvider } from '../providers/chat/chat';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { UserProvider } from '../providers/user/user';
     AngularFireAuth,
     AuthServiceProvider,
     ProductProvider,
-    UserProvider
+    UserProvider,
+    ChatProvider
   ]
 })
 export class AppModule {}

@@ -31,12 +31,25 @@ export class ProductSelectorComponent {
   }
 
   select(id: number){
-    if(this.meusItens.find(x => x.id == id).selected == true){
-      this.meusItens.find(x => x.id == id).selected = false;
-    }else{
+    if(this.meusItens.find(x => x.id == id).selected == false){
       this.meusItens.find(x => x.id == id).selected = true;
     }
+    this.meusItens.forEach(e=>{
+      if(e.id != id){
+        e.selected = false;
+      }       
+      console.log(e.selected) 
+    })
     this.selectedName();
+    this.saveSelected(id)
+  }
+
+  saveSelected(id){
+    var temp = [];
+    this.meusItens.forEach(e=>{
+      temp.push(e)
+    })
+    this.productProvider.selectProducts(temp,id);
   }
 
   edit(id: number){
@@ -60,12 +73,24 @@ export class ProductSelectorComponent {
     this.navCtrl.push(ProductRegisterPage,{});
   }
 
+  removeItem(id){
+    this.productProvider.removeProduct(id)
+  }
+
   ngOnInit(){
     this.selectedName();
-    this.productProvider.getProductList().valueChanges().subscribe(
+    var subs = this.productProvider.getMyProductList().valueChanges().subscribe(
       data => {
         this.meusItens = data;
-      }
+
+        data.forEach(e=>{
+          if(e.selected){
+            //this.meusItens.find(x => x.id == e.id).selected = true
+            this.selectedName()
+          }
+        })
+        //subs.unsubscribe()
+      }   
     )
   }
 }

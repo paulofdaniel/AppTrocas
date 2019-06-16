@@ -14,7 +14,8 @@ class Product {
         public exchangeFor,
         public likes,
         public disLikes,
-        public matches
+        public matches,
+        public selected: boolean
         ){}
     }
 

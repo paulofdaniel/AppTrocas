@@ -25,6 +25,8 @@ export class CardsComponent {
   cards: any = [];
   stackConfig: StackConfig;
   userEmail = this.auth.getEmail();
+  ignoredArray: string[] = [""];
+  selectedCard;
 
   NumberOfCards() {
     return this.cards.length;
@@ -42,13 +44,6 @@ export class CardsComponent {
         return 500;
       }
     }
-
-    /*
-    this.cards = [
-      {name: ' ', description: '', images: [{url:''}]}
-    ];
-    */
-
   }
 
   public growBg(){
@@ -56,6 +51,13 @@ export class CardsComponent {
     bgClass.style.backgroundSize = "300%"
     bgClass.style.height = "100vh"
   }
+
+  public reduceBg(){
+    let bgClass: HTMLElement = document.querySelector(".bg-fluid");
+    bgClass.style.backgroundSize = "100%"
+    bgClass.style.height = "100%"
+  }
+
 
   public throwCard(decision){
     var direction;
@@ -84,15 +86,68 @@ export class CardsComponent {
 
 
   ngAfterViewInit() {
-
-    this.productProvider.getProductList().valueChanges().subscribe(
+    var subs = this.productProvider.getMyProductList().valueChanges().subscribe(
       data => {
-        
         data.forEach(e=>{
-          if(e.userEmail != this.userEmail){
+          if(e.selected){
+            this.selectedCard = e.id;
+            var aux=[e]
+            this.productProvider.selectProducts(aux, e.id)
+          }
+        })
+        subs.unsubscribe()
+      }   
+    )
+    this.productProvider.getMyProductList().valueChanges().subscribe(
+      data => {
+        this.getIgnoredArray();
+      }   
+    )
+    
+  }
+
+
+  getIgnoredArray(){
+    this.ignoredArray = [];
+    this.productProvider.getMyProductList().valueChanges().subscribe(data=>{
+      data.forEach(e=>{ 
+        if(e.selected == true){
+          var tempArray = e.likes;
+          var result = Object.keys(tempArray).map(function(key) {
+            return tempArray[key].toString();
+          });
+          var tempArray2 = e.disLikes;
+          var result2 = Object.keys(tempArray2).map(function(key) {
+            return tempArray2[key].toString();
+          });
+
+          this.ignoredArray = this.ignoredArray.concat(result,result2);
+          this.loadCards(); 
+        }
+      })
+    })
+  }
+
+  loadCards(){
+    var unsubs = this.productProvider.getProductList().valueChanges().subscribe(
+      data => {
+        this.cards=[];
+        data.forEach(e=>{
+          if(e.userEmail != this.userEmail && !this.ignoredArray.includes(e.id)){
             this.cards.push(e)
           }
         });
+        //unsubs.unsubscribe();
+        //unsubs = null;
+
+        const final = [ ];
+        this.cards.map((f,i)=> !final.includes(f) && final.push(f))
+
+        if(this.cards.length>0){
+          this.reduceBg()
+        }        
+
+        this.cards = final;
 
         this.swingStack.throwout.subscribe(
           (event: ThrowEvent) => {
@@ -111,13 +166,37 @@ export class CardsComponent {
           }
         );
       }
-    )    
+    )
   }
   
   // This method is called by hooking up the event
   // on the HTML element - see the template above
   onThrowOut(event: ThrowEvent) {
-    this.matchedEmmit();
+
+    var cardID = event.target.className.split(" ")[1];
+
+    if(event.throwDirection.toString() == "Symbol(RIGHT)"){
+      this.productProvider.updateLikes(cardID)
+    }else if(event.throwDirection.toString() == "Symbol(LEFT)"){
+      this.productProvider.updateDislikes(cardID) 
+    }
+    this.productProvider.getSpecificItem(cardID).valueChanges().subscribe(
+      data => {
+        data.forEach(d=>{
+          
+          var tempArray = d.likes;
+          var result:string[] = Object.keys(tempArray).map(function(key) {
+            return tempArray[key].toString();
+          });
+          
+          result.forEach(elem=>{
+            if(elem == this.selectedCard){
+              this.matchedEmmit()
+            }
+          })
+
+        })
+      })
   }
 
   matchedEmmit() {
